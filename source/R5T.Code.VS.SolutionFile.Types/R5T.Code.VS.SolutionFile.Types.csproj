@@ -9,8 +9,8 @@
     <Folder Include="Code\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\R5T.Code.VisualStudio.IO.Types\source\R5T.Code.VisualStudio.IO.Types\R5T.Code.VisualStudio.IO.Types.csproj" />
-    <ProjectReference Include="..\..\..\R5T.Code.VisualStudio.Types.Core\source\R5T.Code.VisualStudio.Types.Core\R5T.Code.VisualStudio.Types.Core.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Code.VS.IO.Types\source\R5T.Code.VS.IO.Types\R5T.Code.VS.IO.Types.csproj" />
+    <ProjectReference Include="..\..\..\R5T.Code.VS.Types.Core\source\R5T.Code.VS.Types.Core\R5T.Code.VS.Types.Core.csproj" />
     <ProjectReference Include="..\..\..\R5T.NetStandard.IO.Paths.Types\source\R5T.NetStandard.IO.Paths.Types\R5T.NetStandard.IO.Paths.Types.csproj" />
     <ProjectReference Include="..\..\..\R5T.NetStandard.IO.Serialization\source\R5T.NetStandard.IO.Serialization\R5T.NetStandard.IO.Serialization.csproj" />
     <ProjectReference Include="..\..\..\R5T.NetStandard.IO.Types\source\R5T.NetStandard.IO.Types\R5T.NetStandard.IO.Types.csproj" />
