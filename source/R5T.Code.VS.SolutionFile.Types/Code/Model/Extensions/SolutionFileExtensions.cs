@@ -243,6 +243,7 @@ namespace R5T.Code.VisualStudio.Model
 
         /// <summary>
         /// Gets all project reference file paths for project in the dependencies solution folder.
+        /// Requires the solution file path since the solution file model does not store a file path, and all project references are relative paths, relative to the solution file path.
         /// </summary>
         public static IEnumerable<string> GetProjectReferenceDependencyFilePaths(this SolutionFile solutionFile, string solutionFilePath)
         {
