@@ -233,12 +233,44 @@ namespace R5T.Code.VisualStudio.Model
         }
 
         /// <summary>
+        /// Gets all solution file project references, including the dependencies solution folder.
+        /// </summary>
+        public static IEnumerable<SolutionFileProjectReference> GetAllSolutionFileProjectReferences(this SolutionFile solutionFile)
+        {
+            return solutionFile.SolutionFileProjectReferences;
+        }
+
+        /// <summary>
+        /// Get solution file project references.
+        /// Note: this does not include the dependencies solution folder.
+        /// </summary>
+        public static IEnumerable<SolutionFileProjectReference> GetSolutionFileProjectReferences(this SolutionFile solutionFile)
+        {
+            var output = solutionFile.SolutionFileProjectReferences.Where(x => x.ProjectName != Constants.DependenciesSolutionFolderName);
+            return output;
+        }
+
+        /// <summary>
         /// Gets all project reference file paths.
         /// </summary>
         public static IEnumerable<string> GetProjectReferenceFilePaths(this SolutionFile solutionFile, string solutionFilePath)
         {
-            var projectReferenceFilePaths = solutionFile.SolutionFileProjectReferences.Select(projectReference => VsPathUtilities.GetProjectFilePath(solutionFilePath, projectReference.ProjectFileRelativePathValue));
+            var projectReferenceFilePaths = solutionFile.GetSolutionFileProjectReferences().Select(projectReference => VsPathUtilities.GetProjectFilePath(solutionFilePath, projectReference.ProjectFileRelativePathValue));
             return projectReferenceFilePaths;
+        }
+
+        public static IEnumerable<SolutionFileProjectReference> GetNonDependencyProjectReferences(this SolutionFile solutionFile)
+        {
+            var dependencyProjectGUIDs = solutionFile.GetDependencyProjectGUIDs();
+
+            var dependencyProjectReferences = solutionFile.SolutionFileProjectReferences.Where(x => !dependencyProjectGUIDs.Contains(x.ProjectGUID) && x.ProjectName != Constants.DependenciesSolutionFolderName);
+            return dependencyProjectReferences;
+        }
+
+        public static IEnumerable<string> GetNonDependencyProjectFilePaths(this SolutionFile solutionFile, string solutionFilePath)
+        {
+            var projectFilePaths = solutionFile.GetNonDependencyProjectReferences().Select(projectReference => VsPathUtilities.GetProjectFilePath(solutionFilePath, projectReference.ProjectFileRelativePathValue));
+            return projectFilePaths;
         }
 
         /// <summary>
@@ -247,8 +279,8 @@ namespace R5T.Code.VisualStudio.Model
         /// </summary>
         public static IEnumerable<string> GetProjectReferenceDependencyFilePaths(this SolutionFile solutionFile, string solutionFilePath)
         {
-            var dependencies = solutionFile.GetDependencyProjectReferences().Select(projectReference => VsPathUtilities.GetProjectFilePath(solutionFilePath, projectReference.ProjectFileRelativePathValue));
-            return dependencies;
+            var projectFilePaths = solutionFile.GetDependencyProjectReferences().Select(projectReference => VsPathUtilities.GetProjectFilePath(solutionFilePath, projectReference.ProjectFileRelativePathValue));
+            return projectFilePaths;
         }
 
         public static IEnumerable<Guid> GetDependencyProjectGUIDs(this SolutionFile solutionFile)
