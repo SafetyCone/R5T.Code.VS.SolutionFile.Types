@@ -6,9 +6,6 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Code\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\R5T.Code.VS.IO.Types\source\R5T.Code.VS.IO.Types\R5T.Code.VS.IO.Types.csproj" />
     <ProjectReference Include="..\..\..\R5T.Code.VS.Types.Core\source\R5T.Code.VS.Types.Core\R5T.Code.VS.Types.Core.csproj" />
     <ProjectReference Include="..\..\..\R5T.NetStandard.IO.Paths.Types\source\R5T.NetStandard.IO.Paths.Types\R5T.NetStandard.IO.Paths.Types.csproj" />
