@@ -4,13 +4,16 @@ using System.Collections.Generic;
 
 namespace R5T.Code.VisualStudio.Model
 {
-    public class GeneralSolutionFileGlobalSection : SolutionFileGlobalSectionBase
+    /// <summary>
+    /// A generic solution file global section whose data is structured simply as (string) lines.
+    /// </summary>
+    public class GenericSolutionFileGlobalSection : SolutionFileGlobalSectionBase
     {
         #region Static
 
-        public static GeneralSolutionFileGlobalSection New(string name, PreOrPostSolution preOrPostSolution)
+        public static GenericSolutionFileGlobalSection New(string name, PreOrPostSolution preOrPostSolution)
         {
-            var output = new GeneralSolutionFileGlobalSection
+            var output = new GenericSolutionFileGlobalSection
             {
                 Name = name,
                 PreOrPostSolution = preOrPostSolution,
