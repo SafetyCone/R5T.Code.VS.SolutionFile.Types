@@ -122,7 +122,7 @@ namespace R5T.Code.VisualStudio.Model
 
         public static void EnsureHasExtensibilityGlobals(this SolutionFile solutionFile)
         {
-            var hasExtensiblityGlobals = solutionFile.GlobalSections.HasGlobalSectionByName<GeneralSolutionFileGlobalSection>(Constants.ExtensibilityGlobalsSolutionGlobalSectionName, out var extensibilityGlobals);
+            var hasExtensiblityGlobals = solutionFile.GlobalSections.HasGlobalSectionByName<GenericSolutionFileGlobalSection>(Constants.ExtensibilityGlobalsSolutionGlobalSectionName, out var extensibilityGlobals);
             if(!hasExtensiblityGlobals)
             {
                 solutionFile.GlobalSections.AddGlobalSection(SolutionFile.CreateExtensibilityGlobals);

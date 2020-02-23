@@ -57,9 +57,9 @@ namespace R5T.Code.VisualStudio.Model
             return solutionFile;
         }
 
-        public static GeneralSolutionFileGlobalSection CreateSolutionPropertiesGlobalSection()
+        public static GenericSolutionFileGlobalSection CreateSolutionPropertiesGlobalSection()
         {
-            var solutionProperties = new GeneralSolutionFileGlobalSection
+            var solutionProperties = new GenericSolutionFileGlobalSection
             {
                 Name = SolutionFileConstants.SolutionPropertiesSolutionGlobalSectionName,
                 PreOrPostSolution = PreOrPostSolution.PreSolution,
@@ -70,9 +70,9 @@ namespace R5T.Code.VisualStudio.Model
             return solutionProperties;
         }
 
-        public static GeneralSolutionFileGlobalSection CreateExtensibilityGlobals()
+        public static GenericSolutionFileGlobalSection CreateExtensibilityGlobals()
         {
-            var solutionProperties = new GeneralSolutionFileGlobalSection
+            var solutionProperties = new GenericSolutionFileGlobalSection
             {
                 Name = SolutionFileConstants.ExtensibilityGlobalsSolutionGlobalSectionName,
                 PreOrPostSolution = PreOrPostSolution.PostSolution,

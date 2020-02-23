@@ -33,7 +33,7 @@ namespace R5T.Code.VisualStudio.Model
         {
             get
             {
-                foreach (var projectBuildConfigurationMapping in ProjectBuildConfigurationMappings)
+                foreach (var projectBuildConfigurationMapping in this.ProjectBuildConfigurationMappings)
                 {
                     var line = projectBuildConfigurationMapping.ToSolutionFileLine();
                     yield return line;

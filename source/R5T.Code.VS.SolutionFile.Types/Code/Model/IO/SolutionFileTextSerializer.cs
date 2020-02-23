@@ -64,7 +64,7 @@ namespace R5T.Code.VisualStudio.IO
             }
 
             // Solution properties.
-            var solutionProperties = globalSections.GetGlobalSectionByName<GeneralSolutionFileGlobalSection>(Constants.SolutionPropertiesSolutionGlobalSectionName); // Must have.
+            var solutionProperties = globalSections.GetGlobalSectionByName<GenericSolutionFileGlobalSection>(Constants.SolutionPropertiesSolutionGlobalSectionName); // Must have.
 
             globalSectionsInOrder.Add(solutionProperties);
             globalSections.Remove(solutionProperties);
@@ -78,7 +78,7 @@ namespace R5T.Code.VisualStudio.IO
             }
 
             // Extensibility globals.
-            var hasExtensibilityGlobals = globalSections.HasGlobalSectionByName<GeneralSolutionFileGlobalSection>(Constants.ExtensibilityGlobalsSolutionGlobalSectionName, out var extensibilityGlobals); // Can have.
+            var hasExtensibilityGlobals = globalSections.HasGlobalSectionByName<GenericSolutionFileGlobalSection>(Constants.ExtensibilityGlobalsSolutionGlobalSectionName, out var extensibilityGlobals); // Can have.
             if(hasExtensibilityGlobals)
             {
                 globalSectionsInOrder.Add(extensibilityGlobals);
@@ -300,9 +300,9 @@ namespace R5T.Code.VisualStudio.IO
             return nestedProjectGlobalSection;
         }
 
-        private static GeneralSolutionFileGlobalSection DeserializeGeneralGlobal(TextReader reader, ref string currentLine, string sectionName, PreOrPostSolution preOrPostSolution)
+        private static GenericSolutionFileGlobalSection DeserializeGeneralGlobal(TextReader reader, ref string currentLine, string sectionName, PreOrPostSolution preOrPostSolution)
         {
-            var globalSection = new GeneralSolutionFileGlobalSection
+            var globalSection = new GenericSolutionFileGlobalSection
             {
                 Name = sectionName,
                 PreOrPostSolution = preOrPostSolution,

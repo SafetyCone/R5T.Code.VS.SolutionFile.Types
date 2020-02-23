@@ -15,21 +15,6 @@ namespace R5T.Code.VisualStudio.Model
 
             var output = globalSection != default;
             return output;
-
-            //var possibleGlobalSection = globalSections.Where(x => x.Name == globalSectionName).ToList().SingleOrDefault();
-
-            //var isDefault = possibleGlobalSection != default;
-            //if (isDefault)
-            //{
-
-            //}
-            //else
-            //{
-            //    globalSection = possibleGlobalSection as T;
-            //}
-
-            //var output = !isDefault;
-            //return output;
         }
 
         public static bool HasGlobalSectionByName<T>(this IEnumerable<ISolutionFileGlobalSection> globalSections, string globalSectionName)
@@ -73,7 +58,7 @@ namespace R5T.Code.VisualStudio.Model
             return globalSection;
         }
 
-        public static bool HasGlobalSection(this IEnumerable<ISolutionFileGlobalSection> globalSections, string globalSectionName, out GeneralSolutionFileGlobalSection globalSection)
+        public static bool HasGlobalSection(this IEnumerable<ISolutionFileGlobalSection> globalSections, string globalSectionName, out GenericSolutionFileGlobalSection globalSection)
         {
             var output = globalSections.HasGlobalSectionByName(globalSectionName, out globalSection);
             return output;
@@ -81,25 +66,25 @@ namespace R5T.Code.VisualStudio.Model
 
         public static bool HasGlobalSection(this IEnumerable<ISolutionFileGlobalSection> globalSections, string globalSectionName)
         {
-            var output = globalSections.HasGlobalSectionByName<GeneralSolutionFileGlobalSection>(globalSectionName);
+            var output = globalSections.HasGlobalSectionByName<GenericSolutionFileGlobalSection>(globalSectionName);
             return output;
         }
 
-        public static GeneralSolutionFileGlobalSection GetGlobalSection(this IEnumerable<ISolutionFileGlobalSection> globalSections, string globalSectionName)
+        public static GenericSolutionFileGlobalSection GetGlobalSection(this IEnumerable<ISolutionFileGlobalSection> globalSections, string globalSectionName)
         {
-            var globalSection = globalSections.GetGlobalSectionByName<GeneralSolutionFileGlobalSection>(globalSectionName);
+            var globalSection = globalSections.GetGlobalSectionByName<GenericSolutionFileGlobalSection>(globalSectionName);
             return globalSection;
         }
 
-        public static GeneralSolutionFileGlobalSection AddGlobalSection(this List<ISolutionFileGlobalSection> globalSections, string globalSectionName, PreOrPostSolution preOrPostSolution)
+        public static GenericSolutionFileGlobalSection AddGlobalSection(this List<ISolutionFileGlobalSection> globalSections, string globalSectionName, PreOrPostSolution preOrPostSolution)
         {
-            var globalSection = globalSections.AddGlobalSection(() => GeneralSolutionFileGlobalSection.New(globalSectionName, preOrPostSolution));
+            var globalSection = globalSections.AddGlobalSection(() => GenericSolutionFileGlobalSection.New(globalSectionName, preOrPostSolution));
             return globalSection;
         }
 
-        public static GeneralSolutionFileGlobalSection AcquireGlobalSection(this List<ISolutionFileGlobalSection> globalSections, string globalSectionName, PreOrPostSolution preOrPostSolution)
+        public static GenericSolutionFileGlobalSection AcquireGlobalSection(this List<ISolutionFileGlobalSection> globalSections, string globalSectionName, PreOrPostSolution preOrPostSolution)
         {
-            var globalSection = globalSections.AcquireGlobalSectionByName(globalSectionName, () => GeneralSolutionFileGlobalSection.New(globalSectionName, preOrPostSolution));
+            var globalSection = globalSections.AcquireGlobalSectionByName(globalSectionName, () => GenericSolutionFileGlobalSection.New(globalSectionName, preOrPostSolution));
             return globalSection;
         }
 
