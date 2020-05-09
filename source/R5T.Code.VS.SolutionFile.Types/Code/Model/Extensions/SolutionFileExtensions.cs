@@ -246,7 +246,7 @@ namespace R5T.Code.VisualStudio.Model
         /// </summary>
         public static IEnumerable<SolutionFileProjectReference> GetSolutionFileProjectReferences(this SolutionFile solutionFile)
         {
-            var output = solutionFile.SolutionFileProjectReferences.Where(x => x.ProjectName != Constants.DependenciesSolutionFolderName);
+            var output = solutionFile.SolutionFileProjectReferences.Where(x => x.ProjectTypeGUID != Constants.SolutionFolderProjectTypeGUID);
             return output;
         }
 
